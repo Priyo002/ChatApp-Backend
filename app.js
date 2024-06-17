@@ -40,7 +40,7 @@ cloudinary.config({
 
 const app = express();
 const server=createServer(app);
-const io=new Server(server,{
+const io = new Server(server,{
     cors: corsOptions,
 });
 
@@ -72,7 +72,7 @@ io.on("connection",(socket)=>{
    
     userSocketIDs.set(user._id?.toString(),socket.id);
 
-    //console.log(userSocketIDs);
+    console.log(userSocketIDs);
 
     socket.on(NEW_MESSAGE,async({chatId,members,message})=>{
 

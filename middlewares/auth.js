@@ -44,7 +44,7 @@ const socketAuthenticator = async (err,socket,next) => {
 
         const decodedData = jwt.verify(authToken,process.env.JWT_SECRET);
 
-        const user = await User.findById(decodedData._id);
+        const user = await User.findById(decodedData?._id);
 
         if(!user) return next(new ErrorHandler("User not found",404));
 

@@ -8,6 +8,7 @@ import {Request} from '../models/request.js'
 import { NEW_REQUEST, REFETCH_CHATS } from '../constants/events.js';
 import { getOtherMember } from '../lib/helper.js';
 import { uploadFilestoCloudinary } from '../utils/features.js';
+import { CHATAPP_TOKEN } from '../config.js';
 
 // Create a new user and save it to the database and save tokwn in cookie
 const newUser=TryCatch(async(req,res,next)=>{
@@ -64,7 +65,7 @@ const logout=TryCatch(async(req,res)=>{
 
     return res
         .status(200)
-        .cookie("Chattapp-token","",{...cookieOptions, maxAge: 0})
+        .cookie(CHATAPP_TOKEN,"",{...cookieOptions, maxAge: 0})
         .json({
             success:true,
             message:"Logged Out Successfully",
@@ -224,7 +225,6 @@ const getMyFriends=TryCatch(async(req,res)=>{
             friends,
         });
     }
-
     
 });
 

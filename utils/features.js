@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import {v4 as uuid} from 'uuid'
 import {v2 as cloudinary} from 'cloudinary';
 import { getBase64, getSockets } from "../lib/helper.js";
+import { CHATAPP_TOKEN } from "../config.js";
 
 const cookieOptions={
     maxAge:15*24*60*60*1000,
@@ -21,10 +22,10 @@ const connectDB=(uri)=>{
 };
 
 const sendToken=(res,user,code,message)=>{
-    const token=jwt.sign({_id:user._id},process.env.JWT_SECRET);
+    const token = jwt.sign({_id:user._id},process.env.JWT_SECRET);
     
-    return res.status(code).cookie("Chattapp-token",token,cookieOptions).json({
-        success:true,
+    return res.status(code).cookie(CHATAPP_TOKEN,token,cookieOptions).json({
+        success: true,
         user,
         message,
     });
