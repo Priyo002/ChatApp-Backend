@@ -72,7 +72,7 @@ io.on("connection",(socket)=>{
    
     userSocketIDs.set(user._id?.toString(),socket.id);
 
-    console.log(userSocketIDs);
+    //console.log(userSocketIDs);
 
     socket.on(NEW_MESSAGE,async({chatId,members,message})=>{
 
